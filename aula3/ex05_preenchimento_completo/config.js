@@ -19,18 +19,23 @@ function CelulaAleatoria(){
     return Math.floor(Math.random() * 10);
 };
 
-setInterval(function(){ /* usei um while(true) no lugar 
-                        dessa função e fritou o navegador KKKKKK*/
+let contador = 0;
 
-for (let i = 0;  i < 50; i++){
+setInterval(function(){
+
+
     let coluna = CelulaAleatoria();
     let linha  = CelulaAleatoria();
     let x = (coluna * tamanhoDaCelula);
     let y = (linha * tamanhoDaCelula);
+    contador++;
 
 ctx.fillStyle = CorAleatoria();
 
-ctx.fillRect(0, 0, 400, 400);
+ctx.fillRect(x, y, tamanhoDaCelula, tamanhoDaCelula);
 
+if (contador === 100){
+    ctx.clearRect(0, 0, 400, 400);
+    contador = 0;
 }
 }, 100);
